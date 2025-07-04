@@ -1,0 +1,96 @@
+# XML tag  # TODO: attributes
+<[/?!]?[a-zA-Z][-.:\w]*([^>'"]*('[^']*'|"[^"]*"))*\s*/?\s*>
+<!--.*?-->
+
+# XML entity
+&(amp|lt|gt|quot|apos);
+
+# URI RFC: https://tools.ietf.org/html/rfc3696
+# URL ?? nekonci na \pP punctuaiton
+(https?|ftps?|file)://\S*[^\s.,();:]
+#www\.([-a-zA-Z0-9]+\.)+[a-zA-Z]{2,}(/\S*)?
+#[a-zA-Z]([-a-zA-Z0-9]+\.)+(?i:com|org|net|edu|gov|co\.uk)(/\S*)?
+
+# Email
+# http://www.regular-expressions.info/email.html
+# ?? '+% in email  
+#\w[-'.\w]*@([-a-zA-Z0-9]+\.)+[a-zA-Z]{2,}
+[-+'.\w]+@([-a-zA-Z0-9]+\.)+[a-zA-Z]{2,}
+
+# Hashtag
+# ?? ._
+[#@][a-zA-Z][a-zA-Z0-9_]+
+
+# Decades
+'\d0s
+(\d\d)?\d0'?s\b
+
+# Numbers
+\d+([-+/.,:]\d+)*
+# !!![Nn]o\.(?=\s?\d)
+[Nn]o\.
+
+# ??? 's trhame, ale 1980's nechame?
+*SPLIT (?i)(.*[^\d])('s|'re|'ve|'d|'m|'em|'ll|n't)
+*SPLIT (?i)(can)(not)
+
+
+# English abbreviations
+(etc|i\.e|e\.g|q\.v|cf|viz|al|vs|a\.k\.a|o\.k|p\.a|y\.o|p\.m|a\.m)\.
+# Month
+(Jan|Feb|Aug|Sept|Oct|Nov|Dec)\.
+# Units
+(ft|oz)\.
+# Titles
+(Mr|Mrs|Ms|Jr|Sr|Rev|Dr|Ph\.D|Prof|Sgt|Lt|Capt|Maj|Col|Brig|Gen|Rep|Sen|Hon|Esq)\.
+# Street
+(St|Ave|Blvd)\.
+# Company
+(Co|Corp|Inc|Ltd|Bros|Dept|Gov|Pty)\.
+# U.S.States
+(Ala|Alas|Ariz|Ark|Az|Ca|Cal|Calif|Colo|Conn|Ct|De|Del|Fl|Fla|Flor|Ga|Ia|Id|Ida|Il|Ill|Ills|In|Ind|Ioa|Ka|Kan|Kans|Ken|Kent|Ks|Ky|La|Mass|Md|Me|Mich|Minn|Miss|Mn|Mo|Mont|Neb|Nebr|Nev|Nv|N\.Car|N\.Dak|N\.Mex|Okla|Or|Ore|Oreg|Pa|Penn|Penna|R\.Isl|S\.Car|S\.Dak|Tenn|Tex|Tx|Ut|Va|Virg|Vt|Wa|Wash|Wi|Wis|Wisc|Wn|W\.V|W\.Va|W\.Virg|Wy|Wyo)\.
+# rest from treetagger scripts
+(AUG|Adm|Ald|App\.Cas|Assn|Assoc|Att|Av|Bancorp|Bde|Bhd|CO|CORP|COS|Cas|Ch|Ch\.App|Ch\.D|Cia|Cie|Cm|Cmd|Cmnd|Cos|Cowp|Cr\.App\.R|Crim\.L\.R|D\.Litt|D\.Phil|DFl|Dep|Deut|Diod|Div|Drs|Dtr|Durn|E\.g|ESQ|Eph|Eq|Eqn|Eqns|Etc|Exch|Exod|Ext|FIG|Fam|Fig|Figs|Ft|G\.m\.b\.H|Hdt|INC|Ibid|InfoCorp|Intercorp|Invest|JJ|JR|Jud|L\.JJ|L\.R\.Ir|LL\.M|LTD|Ltda|M\.Ed|M\.Litt|M\.Phil|Me\.T\.A|Messrs|Mfg|Mod\.Rep|Nos|Oe|Ont|Op|P\.o\.s|Ph|Pp|Prev|Prop|Pte|Ptr|Reg|Regt|Reps|Repub|Ret|Rom|S\.p\.A|Sec|Sens|Sh\.Ct|Soc|Som|Sp|Ste|Suff|Syll|T\.B\.G\.A\.S|Thess|Thuc|Transp|Trop|U\.S\.P\.G\.A|Univ|Vict|Vol|a\.c|a\.g\.m|approx|b\.s|bldg|c\.c\.d|c\.e\.o|c\.f|c\.g|c\.v|c/s|cap|ch|cit|clar|co|col|cols|constr|cp|cwt|d\.c|d\.f|d\.i\.l|d\.p\.c|def|dw|e\.m\.f|e\.p\.s\.p|edn|edns|est|fig|fl|fol|gen|govt|h\.p|hon|hrs|i\.c|ibid|inc|incl|juv|k\.p\.h|l\.e\.d|lbs|loc|m\.d|m\.p\.h|msec|n\.d|n\.m\.r|norw|nos|ozs|p|p\.c|p\.o\.s|p\.p\.m|p\.s\.i|p\.w|pl|pls|pos|pp|pres|qq\.v|r\.f|r\.h|r\.m\.s|r\.m\.s\.d|r\.p\.m|r\.s\.s|ref|s|s\.a|s\.a\.e|s\.d|s\.e\.m|s\.r\.l|s\.t\.p|spp|sq\.ft|sq\.m|subss|v|v\.B|v\.w|var|vol|vols|w\.c)\.
+
+# U.S.A.
+([A-Z]\.)+
+
+
+# words
+# ?? Pc Connector Punctuation = _ (Low Line = underscore)
+# ?? Pd Dash Punctuation = - (Hyphen-Minus)
+# ?? .' inlined?
+#[\pL\pM\pN_]+(-[\pL\pM\pN_]+)*('s|'re|'ve|'d|'m|'em|'ll|n't)?
+[\pL\pM\pN_]+([-.'][\pL\pM\pN_]+)*
+#\pL([-\pL\pM\pN_]*\pL)?
+#\pL[\pL\pN\pM_]*(-[\pL\pM\pN_]+)*
+
+# Quaran
+#[A-Z][\w']*\w+
+
+# puctuation = any non-word, non-space
+[?!]+
+''
+\.+|\*+|:+|=+
+[^\pL\pM\pN\pZ]
+
+
+
+# Emoji
+#  - combined with Variation selectors (U+FE00 to U+FE0F), Emoji Modifiers (U+1F3FB to U+1F3FF),
+#     Tags (U+E0000 to U+E007F)
+#  - connected by Zero Width Joiner U+200D)
+# ??? separate emoji characters?
+\p{So}[\x{FE00}-\x{FE0F}\x{1F3FB}-\x{1F3FF}\x{E0000}-\x{E007F}]*(\x{200D}\p{So}[\x{FE00}-\x{FE0F}\x{1F3FB}-\x{1F3FF}\x{E0000}-\x{E007F}]*)*
+
+# Keycaps: #*0-9 + Variation Selector-16 + Combining Enclosing Keycap
+# ?? , Emclosing Marks (Me, e.g. Combining Enclosing Keycap U+20E3)
+[#*0-9]\x{FE0F}\x{20E3}
+
+# Country flags
+[\x{01F1E6}-\x{01F1FF}][\x{01F1E6}-\x{01F1FF}]
+
+
+# ?? DOI
+# (?i:doi):\S*\w
+# dalsi na https://github.com/tsproisl/SoMaJo/blob/master/somajo/tokenizer.py
